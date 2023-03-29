@@ -1,0 +1,93 @@
+body.lock {
+    overflow: hidden;
+}
+
+.main-menu-expand {
+    position: fixed;
+    display: none;
+    top: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: 999;
+    background-color: var(--brand-dark);
+    transition: 1s;
+}
+
+.main-menu__item {
+    max-width: fit-content;
+}
+
+.main-menu-expand.active {
+    display: inherit;
+}
+
+.close-button {
+    color: #fff;
+    display: block;
+    width: 32px;
+    height: 32px;
+}
+
+.main-menu-expand-control {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    transform: translate(0, 50%);
+}
+
+.main-menu_logo {
+    filter: brightness(0) invert(1);
+}
+
+.main-menu__column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-left: 1px solid var(--deco-light);
+    padding-left: 10px;
+}
+
+.main-menu__column-heading {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--light-text);
+    margin: 30px 0 10px 0;
+}
+
+.main-menu__column a {
+    line-height: 1.6em;
+    color: var(--light-text);
+}
+
+.main-menu__column a:hover {
+    color: var(--brand-light);
+}
+
+.main-menu-burger span,
+.main-menu-burger::before,
+.main-menu-burger::after {
+    position: absolute;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--light-shade-color);
+    content: " ";
+}
+
+.main-menu-burger {
+    position: relative;
+    width: 24px;
+    height: 16px;
+    cursor: pointer;
+    margin-right: 25px;
+}

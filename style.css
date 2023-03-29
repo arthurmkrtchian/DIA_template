@@ -1,0 +1,14 @@
+/*
+Theme Name: DIATheme
+Author: Arthur Mkrtchian
+Description: The biggest WordPress Theme ever
+Theme URI: 
+Author URI: 
+License: 
+License URI: -
+Version: 1.0
+
+All css files are placed in /css/ folder
+*/
+
+@import("css/index.css")
