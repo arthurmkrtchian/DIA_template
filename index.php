@@ -12,19 +12,72 @@
 </head>
 
 <body>
+    <style>
+        .menu li {
+  display: inline-block;
+  position: relative;
+}
+
+/* Style the links within the top-level menu items */
+.menu li > a {
+  display: block;
+  padding: 10px;
+  color: #333;
+  text-decoration: none;
+}
+
+/* Style the submenus */
+.sub-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 9999;
+  display: none;
+  min-width: 200px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+/* Show the submenu when the parent menu item is hovered */
+.menu li:hover > .sub-menu {
+  display: block;
+}
+
+/* Style the links within the submenus */
+.sub-menu a {
+  display: block;
+  padding: 5px 10px;
+  color: #333;
+  text-decoration: none;
+}
+
+/* Style the links within the submenus when they are hovered */
+.sub-menu a:hover {
+  background-color: #f5f5f5;
+}
+        </style>
+
     <div class="page-wrapper">
         <header id="header">
             <div class="header__container">
                 <div class="logo">
-                    <?php
-                    if ( function_exists( 'the_custom_logo' ) ) {
+                    <?php if (function_exists("the_custom_logo")) {
                         the_custom_logo();
-                    }
-                    ?>
+                    } ?>
                 </div>
                 <nav class="header_nav">
                 
-                <?php /*
+
+                <?php
+  wp_nav_menu( array(
+    'menu' => 'main_en',
+    'menu_class' => 'menu',
+  ) );
+?>
+
+                <?php
+/*
                 wp_nav_menu(
                     array(
                         'menu' => 'primary',
@@ -32,7 +85,7 @@
                         'link_after' => '</span>',
                     )
                 ); */
-                ?>
+?>
                     <ul class="main-menu">
                         <a href="#about-region">
                             <li class="main-menu__element">Region</li>
@@ -108,76 +161,50 @@
     </header>
     <main>
         <section class="news">
-        <?php
-$args = array(
-    'post_type' => 'post',
-    'posts_per_page' => 4,
-);
-$query = new WP_Query($args);
-if ($query->have_posts()) :
-    while ($query->have_posts()) :
-        $query->the_post();
-?>
-<div class="post">
-    <?php if (has_post_thumbnail()) : ?>
-        <div class="post-thumbnail">
-            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
-                <?php the_post_thumbnail(); ?>
-            </a>
-        </div>
-    <?php endif; ?>
-    <div class="post-content">
-        <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-        <div class="post-meta"><?php the_date(); ?></div>
-        <div class="post-excerpt"><?php the_excerpt(); ?></div>
-    </div>
-</div>
-<?php
-    endwhile;
-endif;
-wp_reset_postdata();
-?>
-            <div class="container">
+        <div class="container">
                 <div class="main-slider">
                     <img src="img/slider.png" alt="" class="slider-img">
+                    <?php echo do_shortcode('[ssslider id="36975"]') ?>
                 </div>
                 <div class="last-news__collection">
-                    <a href="#" class="last-news__item">
-                        <div class="last-news__item-image">
-                            <img src="img/posts/train.png" alt="">
-                        </div>
-                        <h3 class="post-caption">Freight transportation by rail between Ukraine and Poland in 2022
-                            increased...</h3>
-                        <p class="post-description">In 2022, 16.9 million tons of cargo were transferred through border
-                            crossings between Ukraine and Poland. This is 36.7% more compared to the previous year...
-                        </p>
-                    </a>
-                    <a href="#" class="last-news__item">
-                        <div class="last-news__item-image">
-                            <img src="img/posts/industry.png" alt="">
-                        </div>
-                        <h3 class="post-caption">Government improves procedure for obtaining emission permits</h3>
-                        <p class="post-description">In 2022, 16.9 million tons of The Cabinet of Ministers of Ukraine
-                            has
-                            amended the Procedure for conducting activities related to issuance of permits for...</p>
-                    </a>
-                    <a href="#" class="last-news__item">
-                        <div class="last-news__item-image">
-                            <img src="img/posts/fitch.png" alt="">
-                        </div>
-                        <h3 class="post-caption">Fitch Ratings has affirmed Ukraine’s Long-Term Foreign-Currency...</h3>
-                        <p class="post-description">This is stated in the Fitch’s press release. «The ratings of Ukraine
-                            reflect its credible macroeconomic policy framework that had lowered inflation and n...</p>
-                    </a>
-                    <a href="#" class="last-news__item">
-                        <div class="last-news__item-image">
-                            <img src="img/posts/economy.png" alt="">
-                        </div>
-                        <h3 class="post-caption">What will be the dynamics of the world economy in 2023</h3>
-                        <p class="post-description">The war in Ukraine has already led to a slowdown in global economic
-                            growth in 2022, accelerated already high global inflation, including due to rising ene...
-                        </p>
-                    </a>
+                <?php
+                $args = [
+                    "post_type" => "post",
+                    "posts_per_page" => 4,
+                        "orderby" => "date",];
+                $query = new WP_Query($args);
+                if ($query->have_posts()):
+                    while ($query->have_posts()):
+                        $query->the_post(); ?>
+                            <a href="<?php the_permalink(); ?>" class="last-news__item">
+                            
+                            <?php 
+                            if (has_post_thumbnail()) {
+                                $featured_img_url = get_the_post_thumbnail_url(get_the_ID(),'full');
+                            ?>
+                                    <div class="last-news__item-image">
+                                        <img src="<?php echo $featured_img_url; ?>" alt="<?php the_title(); ?>"/>
+                                    </div>
+                                    <?php } ?>
+
+                                    <h3 class="post-caption"><?php the_title(); ?></h3>
+                                    <p class="post-description">
+                                        <?php
+                                        $excerpt = get_the_excerpt();
+                                        echo mb_substr($excerpt, 0, 150, 'UTF-8') . '...';  
+
+
+                                        ?>
+                                    </p>
+                                </a>
+                        <?php endwhile; endif;
+                wp_reset_postdata();
+                ?>
+            
+
+
+              
+
                 </div>
             </div>
         </section>
@@ -291,11 +318,9 @@ wp_reset_postdata();
             <div class="footer__column">
                 <div class="footer__column-heading">                 
                     <div class="footer-logo">
-                    <?php
-                    if ( function_exists( 'the_custom_logo' ) ) {
+                    <?php if (function_exists("the_custom_logo")) {
                         the_custom_logo();
-                    }
-                    ?>
+                    } ?>
                     </div>
                 </div>
                 <a href="#" class="footer__column-item">Dnipropetrovsk Regional Council</a>

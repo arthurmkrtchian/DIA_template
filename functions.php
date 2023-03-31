@@ -5,7 +5,7 @@ function diatheme_logo_setup() {
 	);
 	add_theme_support( 'custom-logo', $defaults );
 }
-add_action( 'after_setup_theme', 'diatheme_logo_setup' );
+add_action('after_setup_theme', 'diatheme_logo_setup' );
 
 
 function register_my_menu()
@@ -25,6 +25,7 @@ add_action('init', 'register_my_menu');
     wp_enqueue_style('footer', get_template_directory_uri() . '/assets/css/footer.css');
     wp_enqueue_style('fonts', get_template_directory_uri() . '/assets/fonts/fonts.css');
 
-  
+
+
 ?>
 

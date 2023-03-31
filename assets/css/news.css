@@ -16,6 +16,7 @@
 .last-news__item-image {
     border-radius: 12px;
     overflow: hidden;
+    max-height: 148px;
 }
 
 img {
