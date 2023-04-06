@@ -91,3 +91,62 @@ body.lock {
     cursor: pointer;
     margin-right: 25px;
 }
+
+/* 
+main menu
+*/
+
+.menu li {
+    display: inline-block;
+    position: relative;
+}
+
+/* Style the links within the top-level menu items */
+.menu li>a {
+    display: block;
+    padding: 10px;
+    color: var(--brand-dark);
+    text-decoration: none;
+}
+
+/* Style the submenus */
+.sub-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 9999;
+    display: none;
+    min-width: 200px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 12px 10px rgba(0, 0, 0, 0.2);
+}
+
+.sub-menu li {
+    width: 100%;
+}
+
+/* Show the submenu when the parent menu item is hovered */
+.menu li:hover>.sub-menu {
+    display: block;
+}
+
+.menu li:hover {
+    color: var(--brand-light);
+}
+
+/* Style the links within the submenus */
+.sub-menu a {
+    font-weight: 400;
+    display: block;
+    padding: 5px 10px;
+    color: var(--brand-dark);
+    text-decoration: none;
+}
+
+/* Style the links within the submenus when they are hovered */
+.sub-menu a:hover {
+    background-color: #f5f5f5;
+    color: var(--brand-light);
+}
