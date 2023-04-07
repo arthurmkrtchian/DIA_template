@@ -54,4 +54,27 @@ nav {
     box-shadow: inset 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
+.main-panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
 
+.language li {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-panel {
+    width: 100%;
+    color: var(--panel-light);;
+    position: fixed;
+    z-index: 9999999999;
+}
+
+.language {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}

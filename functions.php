@@ -25,7 +25,7 @@ add_action('init', 'register_my_menu');
     wp_enqueue_style('footer', get_template_directory_uri() . '/assets/css/footer.css');
     wp_enqueue_style('fonts', get_template_directory_uri() . '/assets/fonts/fonts.css');
 	wp_enqueue_style('fonts', get_template_directory_uri() . '/assets/fonts/main-menu.css');
-
+    wp_enqueue_style('fonts', get_template_directory_uri() . '/assets/fonts/single.css');
 
     $uploads_dir = wp_upload_dir();
     $uploads_path = $uploads_dir['basedir'];

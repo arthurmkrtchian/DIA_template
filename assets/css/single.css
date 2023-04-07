@@ -1,0 +1,13 @@
+.related-posts {
+    display: flex;
+    gap: 20px
+}
+
+.post-image {
+    display: block;
+    margin: 0 auto;
+    display: block;
+    margin: 0 auto;
+    width: min-content;
+    border-radius: 12px;
+}

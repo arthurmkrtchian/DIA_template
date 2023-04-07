@@ -1,4 +1,4 @@
-
+<?php get_header(); ?>
     <main>
         <section class="news">
             <div class="container">
@@ -164,4 +164,4 @@
             </div>
         </section>
     </main>
-    <?php wp_footer(); ?>
+<?php get_footer(); ?>

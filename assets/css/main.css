@@ -17,10 +17,15 @@
     --secondary-text: #707070;
     --light-text: #ffffff;
     --deco-light: #ffffff2f;
+    --panel-light: #e6e6e6;
     scroll-behavior: smooth;
 }
 
-body{
+ol {
+    padding-left: 60px;
+}
+
+body {
     font-family: 'Geometria';
 }
 
@@ -73,6 +78,7 @@ p {
     font-size: 16px;
     font-weight: 400;
     color: var(--regular-font-color);
+    margin: 10px 0;
 }
 
 h3 {
@@ -111,3 +117,8 @@ h2 {
     font-size: 18px;
     font-weight: 300;
 }
+
+/* img {
+    display: block;
+    margin: 0 auto;
+} */

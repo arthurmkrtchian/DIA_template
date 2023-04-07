@@ -43,10 +43,10 @@
         </div>
         <div class="copyright">Dnipropetrovsk Investment Agency 2022. Al Rights Reserved.</div>
     </footer>
+    </div>
+    <?php wp_footer(); ?>
     <script src="js/header.js"></script>
     <script src="js/menu.js"></script>
-    
-    </div>
 </body>
 
 </html>
